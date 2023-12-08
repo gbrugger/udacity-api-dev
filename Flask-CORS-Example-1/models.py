@@ -3,11 +3,14 @@ from sqlalchemy import Column, String, Integer, Boolean, create_engine
 from flask_sqlalchemy import SQLAlchemy
 import json
 from sqlalchemy.sql.schema import PrimaryKeyConstraint
+from dotenv import load_dotenv
+
+load_dotenv()
 
 database_name = "plantsdb"
 # Feel free to remove the password argument from the below format() method
 database_path = "postgresql://{}:{}@{}/{}".format(
-    "postgres", "pass", "localhost:5432", database_name
+    "student", os.getenv('DB_PASS'), "localhost:5432", database_name
 )
 db = SQLAlchemy()
 
